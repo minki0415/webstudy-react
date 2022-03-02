@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div><!-- 앞으로 작성할 react app은 이 <div> 내부에 렌더링 됨-->
+    <button class="btn">increase</div>
+
+    <script>
+        // Vanilla JS : 순수 자바스크트립트로만 동작
+        // const root = document.querySelector('#root');
+        // const button = document.querySelector('button');
+        
+        // let count = 0;
+        // root.innerHTML = `<p>0</p>`;
+
+        // button.addEventListener('click', () => {
+        //     root.innerHTML = `<p>${++count}</p>`;
+        // });
+
+        //Component, 초기값
+        const component = {
+            count: 0,
+            updateElement() {
+                return `<p>${this.count}</p>`
+            }
+        };
+
+        //브라우저를 다시 렌더링 하는 함수
+        function render(component, element) {
+            element.innerHTML = component.updateElement();
+        };
+
+        console.log('초기화면 rendering');
+        render(component, document.querySelector('#root'));
+        
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            //특정 이벤트(button click)에 의해 component 값의 상태(state) 변경되면,
+            //바뀐 상태 값으로 화면을 다시 렌더링 한다.
+            component.count += 1;
+
+            //새로 업데이트된 component로 다시 렌더링(re-rendering)
+            console.log('component가 업데이트 되어 새로 렌더링');
+            render(component, document.querySelector('#root'));
+        })
+    </script>
+</body>
+</html>
