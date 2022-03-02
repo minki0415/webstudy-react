@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <button class="btn">increase</button>
+    
+    <script>
+        // console.log(React); // React : React의 최상위 API, React 라이브러리의 진입점.
+        // 이전 상태와 마지막 가장 최근 스냅샷과의 차이를 비교해주고,
+        // 이 변경내역(변경사항)을 ReactDOM에게 전달.
+
+        // console.log(ReactDOM);
+        //React로 생성한 컴포넌트를 브라우저(Real DOM)에 전달해주는 역할
+
+        const component = React.createElement('div', [null],'div입니다.');
+        console.log(component);
+        // div element를 만들고 싶고, props는 없음(null)
+        // div element 내부의 text(content)로 'div입니다.'를 넣고 싶음.
+        // console로 출력해보기
+    </script>
+
+</body>
+</html>
