@@ -16,61 +16,45 @@
 
         const { useState } = React;
 
-        //로그인 버튼
-        const LoginButton = props => {
-            return (
-                <button onClick={props.onClick}>
-                Login
-                </button>
-            )
-        };
-   
+        const LoginControl = () => {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-        //로그아웃 버튼
-        const LogoutButton = props => {
+            const loginButtonHandler = () => {
+                setIsLoggedIn(!isLoggedIn);
+            };
+
             return (
-                <button onClick={props.onClick}>
-                Logout
-                </button>
-            );
+                <>
+                    <Greeting isLoggedIn={isLoggedIn}/>
+                    {isLoggedIn ? <LogoutButton onClick={loginButtonHandler}/> : <LoginButton onClick={loginButtonHandler}/>}
+                </>
+            )
+        } 
+        
+        // 인사 메시지를 처리하는 별도의 컴포넌트 생성
+        const Greeting = (props) => {
+            return props.isLoggedIn ? <UserGreeting/> : <GuestGreeting/>;
         }
 
-        //로그인 상태일 때 사용할 컴포넌트
         const UserGreeting = (props) => {
             return <h1>Welcome back!</h1>
         };
 
-        //비로그인 상태일 때 사용할 컴포넌트
         const GuestGreeting = (props) => {
             return <h1>Please sign up!</h1>
         }
 
-        //로그인 여부를 알려주는 최상위 컴포넌트
-        const Greeting = (props) => {
+        //로그인 버튼
+        const LoginButton = (props) => {
+            return <button onClick={props.onClick}>Login</button>
+        };
+        
+        //로그아웃 버튼
+        const LogoutButton = (props) => {
+            return <button onClick={props.onClick}>Logout</button>
+        };
 
-            const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-            const loginHandler = () => {
-                setIsLoggedIn(!isLoggedIn);
-            };
-            
-            let button;
-
-            if(isLoggedIn) {
-                button = <LogoutButton onClick={loginHandler}/>;
-            }else {
-                button = <LoginButton onClick={loginHandler}/>;
-            }
-
-            return (
-                <>
-                    {isLoggedIn ?  <UserGreeting/> : <GuestGreeting/>}
-                    {button}
-                </>
-            )
-        }
-
-        ReactDOM.render(<Greeting/>, document.getElementById('root'));
+        ReactDOM.render(<LoginControl/>, document.getElementById('root'));
     </script>
 </body>
 </html>
