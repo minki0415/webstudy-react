@@ -13,24 +13,28 @@
     <div id="root"></div>
     
     <script type="text/babel">
-        
-        const { useState } = React;
+        const { useState } = React; // import useState from 'react' 와 동일
 
         const Toggle = () => {
-
             const [isToggleOn, setIsToggleOn] = useState(false);
 
+            // click 이벤트 발생 시 처리를 담당할 handler(담당자)
+            const clickHandler = () => {
+                setIsToggleOn(!isToggleOn);
+            };
 
+
+            // <> </> : Fragment
             return(
                 <>
-                    <img id='bulb' src='pic_bulboff.gif'/><br/><br/>
+                    <img src={isToggleOn ? 'pic_bulboff.gif' : 'pic_bulbon.gif'}/>
                     <button onClick={clickHandler}>
-                        {state.isToggleOn ? 'ON' : 'OFF'}
+                        {isToggleOn ? 'ON' : 'OFF'}
                     </button>
                 </>
-            );
+            )
             
-        }
+        };
 
         ReactDOM.render(<Toggle/>, document.getElementById('root'));
     </script>
