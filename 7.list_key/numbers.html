@@ -19,12 +19,17 @@
         // console.log(Array.isArray(numbers));
         const doubled = numbers.map(number => number * 2);
 
-        // console.log(doubled);
+        console.log(doubled);
 
         // 2. map() in react
         const NumberList = (props) => {
             const numbers = props.numbers;
+            
+            // key는 엘리먼트 리스트를 만들 때 포함해야하는 특수한 문자열 어트리뷰트
+            // Key는 React가 어떤 항목을 변경, 추가 또는 삭제할지 식별하는 것을 돕습니다.
+            // 대부분 ID를 Key 로 사용하며 렌더링 한 항목에 대한 안정적인 ID가 없다면 최후 수단으로 Index를 Key로 사용
             const listItems = numbers.map( (number, index) => <li key={index}>{number}</li>);
+
             
             return <ul>{listItems}</ul>;
         }
