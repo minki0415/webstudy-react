@@ -3,7 +3,7 @@ import logo from './logo.svg';
 // import './App.css';
 
 // 2. SCSS 방식
-import './App.scss';
+// import './App.scss';
 
 // 3. CSS Module 방식
 import styles from './App.module.css';
@@ -64,9 +64,9 @@ function App() {
         >
           Learn React
         </a>
+        <Button/> 
       </header>
 
-      <Button/>
 
     </div>
   );

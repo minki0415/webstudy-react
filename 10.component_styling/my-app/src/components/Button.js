@@ -1,5 +1,10 @@
+import './button-style.css';
+import styles from './Button.module.css';
+
+
 const Button = props => {
-    return <button>Check Button</button>
+    console.log(styles);
+    return <button className={styles["error"]}>Check Button</button>
 };
 
 // 어딘가에서 Button.js 컴포넌트를 사용하기 위해서는 
